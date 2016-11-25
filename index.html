@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bangkalan</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="dist/leaflet.css" />
+	<link rel="stylesheet" href="dist/bootstrap/css/bootstrap.min.css" >
+	<link rel="stylesheet" href="dist/css/bootstrap-circle-button.css" media="screen" title="no title">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" media="screen" title="no title">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.2.0/css/mdb.min.css" media="screen" title="no title">
+	<link rel="stylesheet" href="dist/css/css-ku-dewe.css" media="screen" title="no title">
+</head>
+<body>
+
+	<div id="map" style="width: 100%; height: 100%; position: fixed; top: 0; left: 0"></div>
+
+	<div class="box right top fixed and pinned" style="width: 545px">
+		<div class="form-group">
+			<div class="row">
+				<div class="col-md-9">
+					<input type="text" class="form-control full-width" placeholder="Cari sesuatu">
+				</div>
+				<div class="col-md-3">
+					<button class="btn btn-primary"><i class="fa fa-search"></i> Cari</button>
+				</div>
+			</div>
+		</div>
+		<div class="btn-group">
+			<button class="btn btn-success"><i class="fa fa-cutlery"></i></button>
+			<button class="btn btn-secondary"><i class="fa fa-moon-o"></i></button>
+			<button class="btn btn-mdb"><i class="fa fa-tree"></i></button>
+			<button class="btn btn-info"><i class="fa fa-building"></i></button>
+			<button class="btn btn-warning"><i class="fa fa-hotel"></i></button>
+			<button class="btn btn-default"><i class="fa fa-shopping-cart"></i></button>
+		</div>
+	</div>
+	<div class="box right fixed pinned font-medium" style="top: 200px; width: 545px">
+		<span class="font-secondary">Your Location</span> <span id="lokasi">Loading..</span>
+		<button id="btn-get-lokasi" class="btn btn-default"><i class="fa fa-podcast"></i></button>
+	</div>
+	<!-- Modal -->
+	<div id="myModal" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-lg">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Bangkalan Kotaku</h4>
+				</div>
+				<div class="modal-body">
+					<h2>Selamat datang! Anda bisa mencari fasilitas kota yang anda butuhkan.</h2>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Mengerti</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<script src="dist/leaflet.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" charset="utf-8"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.2.0/js/mdb.min.js" charset="utf-8"></script>
+	<script src="dist/peta.js" charset="utf-8"></script>
+	<script type="text/javascript">
+		$.ajax({
+			url: 'http://ip-api.com/json',
+			success: function (response) {
+				$('#lokasi').text(response.city + '/' + response.country)
+			}
+		})
+
+		$('#btn-get-lokasi').click(function () {
+			navigator.geolocation.getCurrentPosition(function (position) {
+				var lat = position.coords.latitude
+				var long = position.coords.longitude
+				map.panTo(new L.LatLng(lat, long));
+			})
+		})
+	</script>
+</body>
+</html>
