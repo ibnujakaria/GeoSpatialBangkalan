@@ -1,0 +1,22 @@
+{
+  "name": "geo-spatial-bangkalan",
+  "version": "1.0.0",
+  "description": "Data-data spatial seputar Kabupaten Bangkalan",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ibnujakaria/GeoSpatialBangkalan.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ibnujakaria/GeoSpatialBangkalan/issues"
+  },
+  "homepage": "https://github.com/ibnujakaria/GeoSpatialBangkalan#readme",
+  "devDependencies": {
+    "vue": "^2.1.3"
+  }
+}
