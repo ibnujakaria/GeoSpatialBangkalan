@@ -87,3 +87,23 @@ body {
 .sidebar h1 {
   color: orange;
 }
+
+#map-controls button {
+  background-color: white;
+  border: none;
+  padding: 5px;
+  padding-right: 8px;
+  padding-left: 8px;
+  border-radius: 4px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+.list-group-item {
+  cursor: pointer;
+}
+
+.list-group-item:hover {
+  background-color: #337ab7;
+  border-color: #337ab7;
+  color: white;
+}

@@ -13,84 +13,94 @@
 	<link rel="stylesheet" href="dist/css/css-ku-menu.css" media="screen" title="no title">
 </head>
 <body>
-	<div id="vue-instance">
+	<div id="map"></div>
+	<div id="map-controls" class="left top fixed" style="margin-left: 10px; top: 80px">
+		<button id="btn-full-screen"><i class="fa fa-arrows-alt"></i></button>
+	</div>
+	<div id="vue-app">
 		<div class="sidebar" style="display: none">
 			<h1>Fasilitas Bangkalan</h1>
 			<p>
 				Temukan fasilitas-fasilitas umum di kota Bangkalan. Dan jangan tersesat!
 			</p>
-			<ul class="list-group">
-				<li class="list-group-item active">
+			<ul class="list-group" v-if="menu_aktif === 'fasilitas-umum'">
+				<li :class="getClassLists('fasilitas-umum')" @click="aksesMenu('fasilitas-umum')">
 					<i class="fa fa-building" style="width: 20px"></i>
 					Fasilitas Umum
 				</li>
-				<li class="list-group-item">
+				<li :class="getClassLists('pencarian')" @click="aksesMenu('pencarian')">
 					<i class="fa fa-search" style="width: 20px"></i>
 					Pencarian
 				</li>
-				<li class="list-group-item">
+				<li :class="getClassLists('tentang')" @click="aksesMenu('tentang')">
 					<i class="fa fa-user" style="width: 20px"></i>
 					Tentang
 				</li>
-				<li class="list-group-item">
+				<li :class="getClassLists('bantuan')" @click="aksesMenu('bantuan')">
 					<i class="fa fa-question" style="width: 20px"></i>
 					Bantuan
 				</li>
-				<li class="list-group-item">
+				<li :class="getClassLists('hubungi')" @click="aksesMenu('hubungi')">
 					<i class="fa fa-phone" style="width: 20px"></i>
 					Hubungi
 				</li>
-				<li class="list-group-item">
+				<li :class="getClassLists('saran')" @click="aksesMenu('saran')">
 					<i class="fa fa-envelope" style="width: 20px"></i>
 					Saran
 				</li>
 			</ul>
+			<ul class="list-group" v-show="menu_aktif === 'pencarian'">
+				<li class="list-group-item" @click="aksesMenu('fasilitas-umum')">
+					<i class="fa fa-arrow-left" style="width: 20px"></i>
+					Back
+				</li>
+				<div class="box">
+					<form id="form-cari-masjid">
+						<h3>Cari masjid di sekitar</h3>
+						<div class="form-group">
+							<label>Nama Jalan</label>
+							<select id="jalan-input" class="form-control">
+							</select>
+						</div>
+						<div class="form-group">
+							<label>Radius</label>
+							<input type="number" name="radius" step="0.0001" id="radius-input">
+						</div>
+						<div>
+							<button class="btn btn-sm btn-default">Cari</button>
+						</div>
+					</form>		
+				</div>
+			</ul>
 		</div>
-		<div id="map"></div>
-
 		<!-- <div class="box right top fixed and pinned" style="width: 300px">
-			<form id="form-cari-masjid">
-				<h3>Cari masjid di sekitar</h3>
-				<div class="form-group">
-					<label>Nama Jalan</label>
-					<select id="jalan-input">
-						
-					</select>
-				</div>
-				<div class="form-group">
-					<label>Radius</label>
-					<input type="number" name="radius" step="0.0001" id="radius-input">
-				</div>
-				<div>
-					<button class="btn btn-sm btn-default">Cari</button>
-				</div>
-			</form>
+			
 		</div> -->
 		<div class="cover blurred">
 		</div>
 		<div class="menu-utama box transparent fixed center no-padding">
 			<div class="menu">
-				<div class="item orange" role="fasilitas-umum">
+				<div class="item orange" @click="menuUtama('fasilitas-umum')">
 					<p><i class="fa fa-building"></i></p>
 					Fasilitas Umum
 				</div>
-				<div class="item green" role="pencarian">
+				<div class="item green" @click="menuUtama('pencarian')">
 					<p><i class="fa fa-search"></i></p>
 					Pencarian
 				</div>
-				<div class="item grey" role="tentang">
+				<div class="item grey" @click="menuUtama('tentang')">
 					<p><i class="fa fa-user"></i></p>
 					Tentang
 				</div>
-				<div class="item purple" role="bantuan">
+				<div class="item purple" @click="menuUtama('bantuan')">
 					<p><i class="fa fa-question"></i></p>
 					Bantuan
 				</div>
-				<div class="item blue" role="hubungi">
+				<div class="item blue" @click="menuUtama('hubungi')">
 					<p><i class="fa fa-phone"></i></p>
 					Hubungi
 				</div>
-				<div class="item red" role="saran">
+				<div class="item red" @click="menuUtama('saran')">
 					<p><i class="fa fa-envelope"></i></p>
 					Saran
 				</div>
@@ -102,7 +112,8 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" charset="utf-8"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.2.0/js/mdb.min.js" charset="utf-8"></script>
-	<!-- <script src="dist/app.js"></script> -->
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+
 	<script src="dist/peta.js" charset="utf-8"></script>
 	<script src="dist/peta-icons.js"></script>
 	<script src="dist/peta-loader.js"></script>
@@ -111,5 +122,7 @@
 	<script type="text/javascript">
 		peta_awal()
 	</script>
+
+	<script src="dist/app.js"></script>
 </body>
 </html>

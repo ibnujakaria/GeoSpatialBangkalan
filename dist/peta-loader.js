@@ -49,8 +49,10 @@ function tampilkanJalan() {
       success: function (response) {
         jalanLayer = new L.GeoJSON(response, {
           onEachFeature: function (feature, layer) {
-            if (!jalanLayer)
+            if (!jalanLayer){
               $('#jalan-input').append('<option>' + feature.properties.nama + '</option>')
+              console.log("opo iki " + feature.properties.nama)
+            }
             var popup = '<h4>nama : '+ feature.properties.nama + '</h4>' 
             popup += '<button gid="' + feature.properties.gid + '">Edit</button>'
             popup += '<button>Hapus</button>'

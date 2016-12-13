@@ -4,7 +4,7 @@ var map = L.map('map').setView([-7.115440, 112.850846], 12);
 var masjidLayer = null
 var jalanLayer = null
 
-//var map = L.map('map').setView([-7.13045833460832, 112.724274204192 ], 18);
-// ini adalah copyright, bisa dicopot tapi lebih baik kita hargai sang penciptanya ya :)
-
-//L.tileLayer('http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png', {
+L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 81,
+  attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>, Modified © <a href="http://elcicko.web.id">ElCickoBlog</a>'
+}).addTo(map);
