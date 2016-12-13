@@ -20,5 +20,7 @@ function geserPetaKeKanan() {
 		left: '360px',
 		bottom: '20px',
 		right: '20px'
+	}, function () {
+		$('.sidebar').fadeIn(1000)
 	})
 }

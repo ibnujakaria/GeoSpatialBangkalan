@@ -1,6 +1,6 @@
 var geojsonFeature = null
 
-var map = L.map('map').setView([-7.126440, 112.722846], 12);
+var map = L.map('map').setView([-7.115440, 112.850846], 12);
 var masjidLayer = null
 var jalanLayer = null
 
