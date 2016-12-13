@@ -49,11 +49,13 @@
 					Saran
 				</li>
 			</ul>
-			<ul class="list-group" v-show="menu_aktif === 'pencarian'">
-				<li class="list-group-item" @click="aksesMenu('fasilitas-umum')">
-					<i class="fa fa-arrow-left" style="width: 20px"></i>
-					Back
-				</li>
+			<div v-show="menu_aktif === 'pencarian'">
+				<ul class="list-group" style="margin-bottom: 10px">
+					<li class="list-group-item" @click="aksesMenu('fasilitas-umum')">
+						<i class="fa fa-arrow-left" style="width: 20px"></i>
+						Back
+					</li>
+				</ul>
 				<div class="box">
 					<form id="form-cari-masjid">
 						<h3>Cari masjid di sekitar</h3>
@@ -71,7 +73,7 @@
 						</div>
 					</form>		
 				</div>
-			</ul>
+			</div>
 		</div>
 		<!-- <div class="box right top fixed and pinned" style="width: 300px">
 			
