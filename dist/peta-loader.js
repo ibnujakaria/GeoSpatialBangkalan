@@ -22,10 +22,9 @@ function tampilkanMasjid() {
           return L.marker(latlng, {icon: masjidIcon})
         },
         onEachFeature: function (feature, layer) {
-          var popup = '<h4>nama : '+ feature.properties.nama + '</h4>'
+          var popup = '<img src="'+feature.properties.picture+'" width="300px" heigth="500px"></img>'
+          popup += '<h4>nama : '+ feature.properties.nama + '</h4>'
           popup += '<h4>kapasitas : '+ feature.properties.kapasitas + '</h4>'
-          popup += '<button gid="' + feature.properties.gid + '">Edit</button>'
-          popup += '<button>Hapus</button>'
           layer.bindPopup(popup)
         },
       });
@@ -53,7 +52,7 @@ function tampilkanJalan() {
               $('#jalan-input').append('<option>' + feature.properties.nama + '</option>')
               console.log("opo iki " + feature.properties.nama)
             }
-            var popup = '<h4>nama : '+ feature.properties.nama + '</h4>' 
+            var popup = '<h4>nama : '+ feature.properties.nama + '</h4>'
             popup += '<button gid="' + feature.properties.gid + '">Edit</button>'
             popup += '<button>Hapus</button>'
             layer.bindPopup(popup)
@@ -92,10 +91,9 @@ function peta_awal() {
           return L.marker(latlng, {icon: bankIcon})
         },
         onEachFeature: function (feature, layer) {
-          var popup = '<h4>nama : '+ feature.properties.nama + '</h4>'
+          var popup = '<img src="'+feature.properties.picture+'" width="300px" heigth="500px"></img>'
+          popup += '<h4>nama : '+ feature.properties.nama + '</h4>'
           popup += '<h4>jam buka : '+ feature.properties.jam_buka + '</h4>'
-          popup += '<button gid="' + feature.properties.gid + '">Edit</button>'
-          popup += '<button>Hapus</button>'
           layer.bindPopup(popup)
         }
       }).addTo(map);
@@ -110,10 +108,9 @@ function peta_awal() {
           return L.marker(latlng, {icon: gedungOlarahragaIcon})
         },
         onEachFeature: function (feature, layer) {
-          var popup = '<h4>nama : '+ feature.properties.nama + '</h4>'
+          var popup = '<img src="'+feature.properties.picture+'" width="300px" heigth="500px"></img>'
+          popup += '<h4>nama : '+ feature.properties.nama + '</h4>'
           popup += '<h4>kapasitas : '+ feature.properties.kapasitas + '</h4>'
-          popup += '<button gid="' + feature.properties.gid + '">Edit</button>'
-          popup += '<button>Hapus</button>'
           layer.bindPopup(popup)
         }
       }).addTo(map);
@@ -128,10 +125,9 @@ function peta_awal() {
           return L.marker(latlng, {icon: hotelIcon})
         },
         onEachFeature: function (feature, layer) {
-          var popup = '<h4>nama : '+ feature.properties.nama + '</h4>'
+          var popup = '<img src="'+feature.properties.picture+'" width="300px" heigth="500px"></img>'
+          popup += '<h4>nama : '+ feature.properties.nama + '</h4>'
           popup += '<h4>kapasitas : '+ feature.properties.kapasitas + '</h4>'
-          popup += '<button gid="' + feature.properties.gid + '">Edit</button>'
-          popup += '<button>Hapus</button>'
           layer.bindPopup(popup)
         }
       }).addTo(map);
@@ -146,10 +142,9 @@ function peta_awal() {
           return L.marker(latlng, {icon: mallIcon})
         },
         onEachFeature: function (feature, layer) {
-          var popup = '<h4>nama : '+ feature.properties.nama + '</h4>'
+          var popup = '<img src="'+feature.properties.picture+'" width="300px" heigth="500px"></img>'
+          popup += '<h4>nama : '+ feature.properties.nama + '</h4>'
           popup += '<h4>jam buka : '+ feature.properties.jam_buka + '</h4>'
-          popup += '<button gid="' + feature.properties.gid + '">Edit</button>'
-          popup += '<button>Hapus</button>'
           layer.bindPopup(popup)
         }
       }).addTo(map);
@@ -165,11 +160,10 @@ function peta_awal() {
           return L.marker(latlng, {icon: restoranIcon})
         },
         onEachFeature: function (feature, layer) {
-          var popup = '<h4>nama : '+ feature.properties.nama + '</h4>'
+          var popup = '<img src="'+feature.properties.picture+'" width="300px" heigth="500px"></img>'
+          popup += '<h4>nama : '+ feature.properties.nama + '</h4>'
           popup += '<h4>menu : '+ feature.properties.menu + '</h4>'
           popup += '<h4>kapasitas : '+ feature.properties.kapasitas + '</h4>'
-          popup += '<button gid="' + feature.properties.gid + '">Edit</button>'
-          popup += '<button>Hapus</button>'
           layer.bindPopup(popup)
         }
       }).addTo(map);
@@ -184,10 +178,9 @@ function peta_awal() {
           return L.marker(latlng, {icon: sekolahIcon})
         },
         onEachFeature: function (feature, layer) {
-          var popup = '<h4>nama : '+ feature.properties.nama + '</h4>'
+          var popup = '<img src="'+feature.properties.picture+'" width="300px" heigth="500px"></img>'
+          popup += '<h4>nama : '+ feature.properties.nama + '</h4>'
           popup += '<h4>kapasitas : '+ feature.properties.kapasitas + '</h4>'
-          popup += '<button gid="' + feature.properties.gid + '">Edit</button>'
-          popup += '<button>Hapus</button>'
           layer.bindPopup(popup)
         }
       }).addTo(map);
@@ -202,11 +195,10 @@ function peta_awal() {
           return L.marker(latlng, {icon: wisataIcon})
         },
         onEachFeature: function (feature, layer) {
-          var popup = '<h4>nama : '+ feature.properties.nama + '</h4>'
+          var popup = '<img src="'+feature.properties.picture+'" width="300px" heigth="500px"></img>'
+          popup += '<h4>nama : '+ feature.properties.nama + '</h4>'
           popup += '<h4>tiket : '+ feature.properties.tiket + '</h4>'
           popup += '<h4>jam buka : '+ feature.properties.jam_buka + '</h4>'
-          popup += '<button gid="' + feature.properties.gid + '">Edit</button>'
-          popup += '<button>Hapus</button>'
           layer.bindPopup(popup)
         }
       }).addTo(map);

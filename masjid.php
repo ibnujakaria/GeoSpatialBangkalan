@@ -3,7 +3,7 @@ include 'config.php';
 header('Content-type: application/json');
 
 //disini nama database saya adalah nama_database
-$result = pg_query($conn, 'SELECT gid, namamasjid,kapasitas, st_asgeojson(geom) as geom FROM Masjid');
+$result = pg_query($conn, 'SELECT gid, namamasjid,kapasitas, pictures, st_asgeojson(geom) as geom FROM Masjid');
 
 
 // jika dekat dengan jalan
@@ -17,8 +17,8 @@ if (@$_GET['jalan'] && $_GET['jalan'] != 'semua') {
 
   $radius = @$_GET['radius'] ? $_GET['radius'] : 50;
 
-  $query = "select gid, namamasjid, kapasitas, st_asgeojson(geom) as geom from masjid where st_dwithin(geom, st_geomfromtext('{$jalan_geom_text}'), {$radius})";
-  
+  $query = "select gid, namamasjid, kapasitas, pictures, st_asgeojson(geom) as geom from masjid where st_dwithin(geom, st_geomfromtext('{$jalan_geom_text}'), {$radius})";
+
   $result = pg_query($conn, $query);
 }
 
@@ -40,7 +40,9 @@ while ($row = pg_fetch_assoc($result)) {
     'properties' => [
       'gid' => $row->gid,
       'nama' => $row->namamasjid,
-      'kapasitas' => $row->kapasitas
+      'kapasitas' => $row->kapasitas,
+      'picture' => $row->pictures
+
     ]
   ];
 

@@ -2,7 +2,7 @@
 include 'config.php';
 
 //disini nama database saya adalah nama_database
-$result = pg_prepare($conn, "my_query", 'SELECT gid, nama,tiket,jam_buka, st_asgeojson(geom) as geom FROM Tempat_wisata');
+$result = pg_prepare($conn, "my_query", 'SELECT gid, nama,tiket,jam_buka,pictures, st_asgeojson(geom) as geom FROM Tempat_wisata');
 
 // disini saya membuat table dengan nama Gazebo
 $result = pg_execute($conn, "my_query",array());
@@ -26,7 +26,8 @@ while ($row = pg_fetch_assoc($result)) {
       'gid' => $row->gid,
       'nama' => $row->nama,
       'tiket' => $row->tiket,
-      'jam_buka' => $row->jam_buka
+      'jam_buka' => $row->jam_buka,
+      'picture' => $row->pictures
     ]
   ];
 
