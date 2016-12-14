@@ -52,9 +52,8 @@ function tampilkanJalan() {
               $('#jalan-input').append('<option>' + feature.properties.nama + '</option>')
               console.log("opo iki " + feature.properties.nama)
             }
-            var popup = '<h4>nama : '+ feature.properties.nama + '</h4>'
-            popup += '<button gid="' + feature.properties.gid + '">Edit</button>'
-            popup += '<button>Hapus</button>'
+            var popup = '<img src="'+feature.properties.picture+'" width="300px" heigth="500px"></img>'
+            popup += '<h4>nama : '+ feature.properties.nama + '</h4>'
             layer.bindPopup(popup)
           },
           style: function (feature) {
