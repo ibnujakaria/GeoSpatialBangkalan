@@ -1,0 +1,22 @@
+.menu {
+	width: 600px;
+}
+
+.menu .item {
+	box-sizing: border-box;
+	float: left;
+	display: block;
+	width: 200px;
+	padding: 50px;
+	text-align: center;
+	color: white;
+	cursor: pointer;
+}
+
+.menu .item:hover {
+	text-decoration: underline;
+}
+
+.menu .item p i.fa {
+	font-size: 20pt;
+}
