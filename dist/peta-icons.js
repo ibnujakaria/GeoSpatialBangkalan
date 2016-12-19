@@ -1,4 +1,6 @@
-var masjidIcon = new L.icon({
+var icons = {}
+
+icons.masjid = new L.icon({
   iconUrl: 'https://masjidabubakarcawang.files.wordpress.com/2015/04/abu-bakar.png',
   shadowUrl: 'https://masjidabubakarcawang.files.wordpress.com/2015/04/abu-bakar.png',
 
@@ -9,7 +11,7 @@ var masjidIcon = new L.icon({
   popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 
-var restoranIcon = new L.icon({
+icons.rumah_makan = new L.icon({
   iconUrl: 'http://dining1.ut.ac.ir/res?id=11607&dl=false',
   shadowUrl: 'http://dining1.ut.ac.ir/res?id=11607&dl=false',
 
@@ -20,7 +22,7 @@ var restoranIcon = new L.icon({
   popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 
-var bankIcon = new L.icon({
+icons.bank = new L.icon({
   iconUrl: 'http://www.soloptik.dk/images/payment/bank-transfer.png',
   shadowUrl: 'http://www.soloptik.dk/images/payment/bank-transfer.png',
 
@@ -31,7 +33,7 @@ var bankIcon = new L.icon({
   popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 
-var sekolahIcon = new L.icon({
+icons.sekolahan = new L.icon({
   iconUrl: 'http://zyk.ouchn.edu.cn/images/item/apic06.png',
   shadowUrl: 'http://zyk.ouchn.edu.cn/images/item/apic06.png',
 
@@ -42,7 +44,7 @@ var sekolahIcon = new L.icon({
   popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 
-var mallIcon = new L.icon({
+icons.mall_dan_swalayan = new L.icon({
   iconUrl: 'http://vignette2.wikia.nocookie.net/cityville/images/6/67/Famous_Mall_Level_3.png/revision/latest?cb=20120626024128',
   shadowUrl: 'http://vignette2.wikia.nocookie.net/cityville/images/6/67/Famous_Mall_Level_3.png/revision/latest?cb=20120626024128',
 
@@ -53,7 +55,7 @@ var mallIcon = new L.icon({
   popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 
-var wisataIcon = new L.icon({
+icons.tempat_wisata = new L.icon({
   iconUrl: 'http://pulauharapankita.com/img/pulauharapankita.png',
   shadowUrl: 'http://pulauharapankita.com/img/pulauharapankita.png',
 
@@ -64,7 +66,7 @@ var wisataIcon = new L.icon({
   popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 
-var gedungOlarahragaIcon = new L.icon({
+icons.gedung_olahraga = new L.icon({
   iconUrl: 'https://wallazee.global.ssl.fastly.net/images/variant/20130718-ba42c0329945c2c3ee70b73285e150d9ca1f109f1005f2a45586fce-1024.png',
   shadowUrl: 'https://wallazee.global.ssl.fastly.net/images/variant/20130718-ba42c0329945c2c3ee70b73285e150d9ca1f109f1005f2a45586fce-1024.png',
 
@@ -75,7 +77,7 @@ var gedungOlarahragaIcon = new L.icon({
   popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
 
-var hotelIcon = new L.icon({
+icons.hotel = new L.icon({
   iconUrl: 'https://cdn2.iconfinder.com/data/icons/large-home-icons/512/Hotel_travel_holiday_vector_vacation_symbol.png',
   shadowUrl: 'https://cdn2.iconfinder.com/data/icons/large-home-icons/512/Hotel_travel_holiday_vector_vacation_symbol.png',
 

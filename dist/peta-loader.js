@@ -1,16 +1,12 @@
+var petaLoaders = {}
+
+petaLoaders.tampilkanMasjid = function () {
+  console.log("Hello!")
+}
+
 function tampilkanMasjid() {
   if (masjidLayer) {
     map.removeLayer(masjidLayer)
-  }
-
-
-  var query = {}
-  if ($('#jalan-input').val()) {
-    query.jalan = $('#jalan-input').val();
-  }
-
-  if ($('#radius-input').val()) {
-    query.radius = $('#radius-input').val();
   }
 
   $.ajax({
@@ -50,8 +46,8 @@ function tampilkanJalan() {
           onEachFeature: function (feature, layer) {
             if (!jalanLayer){
               $('#jalan-input').append('<option>' + feature.properties.nama + '</option>')
-              console.log("opo iki " + feature.properties.nama)
             }
+            
             var popup = '<img src="'+feature.properties.picture+'" width="300px" heigth="500px"></img>'
             popup += '<h4>nama : '+ feature.properties.nama + '</h4>'
             layer.bindPopup(popup)
