@@ -1,5 +1,5 @@
 <?php
-include 'config.php';
+include 'boot/starter.php';
 header('Content-type: application/json');
 
 //disini nama database saya adalah nama_database
