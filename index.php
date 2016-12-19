@@ -61,33 +61,30 @@
 						<h4>Apa yang ingin anda cari?</h4>
 						<div class="form-group">
 							<select class="form-control" v-model="search.type">
-								<option value="masjid">Masjid</option>
-								<option value="mall">Mall</option>
-								<option value="bank">Bank</option>
-								<option value="jalan">Jalan</option>
+								<option :value="fasilitas.key" v-for="fasilitas in listFasilitas">{{fasilitas.title}}</option>
 							</select>
 						</div>
 						<div v-if="search.type">
-							<h4>Cari <span style="text-transform: capitalize;">{{search.type}}</span> di sekitar?</h4>
+							<h4>Cari <span style="text-transform: capitalize;">{{getFasilitasTitle(search.type)}}</span> di sekitar?</h4>
 							<div class="form-group">
-								<select class="form-control" v-model="search.nearby">
-									<option value="masjid">Masjid</option>
-									<option value="mall">Mall</option>
-									<option value="bank">Bank</option>
-									<option value="jalan">Jalan</option>
+								<select class="form-control" v-model="search.nearby" @change="getNearbyFasilitasSelected">
+									<option :value="fasilitas.key" v-for="fasilitas in listFasilitas">{{fasilitas.title}}</option>
 								</select>
 							</div>
 						</div>
 						<div v-if="search.nearby">
-							<form>
+							<form @submit.prevent="searchGeo">
 								<div class="form-group">
-									<h4>Nama <span style="text-transform: capitalize;">{{search.nearby}}</span></h4>
-									<select id="jalan-input" class="form-control">
+									<h4>Nama <span style="text-transform: capitalize;">{{getFasilitasTitle(search.nearby)}}</span></h4>
+									<select class="form-control" v-model="search.gid">
+										<option :value="fasilitas.properties.gid" v-for="fasilitas in dataGeoJson.features">
+											{{fasilitas.properties.nama}}
+										</option>
 									</select>
 								</div>
 								<div class="form-group">
 									<h4>Radius</h4>
-									<input type="number" name="radius" step="0.0001" id="radius-input">
+									<input type="number" step="0.0001" v-model="search.radius">
 								</div>
 								<div>
 									<button class="btn btn-sm btn-default">Cari</button>
@@ -95,21 +92,6 @@
 							</form>
 						</div>
 					</div>
-					<!-- <form id="form-cari-masjid">
-						<h3>Cari masjid di sekitar</h3>
-						<div class="form-group">
-							<label>Nama Jalan</label>
-							<select id="jalan-input" class="form-control">
-							</select>
-						</div>
-						<div class="form-group">
-							<label>Radius</label>
-							<input type="number" name="radius" step="0.0001" id="radius-input">
-						</div>
-						<div>
-							<button class="btn btn-sm btn-default">Cari</button>
-						</div>
-					</form>		 -->
 				</div>
 			</div>
 		</div>
@@ -153,7 +135,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.2.0/js/mdb.min.js" charset="utf-8"></script>
 	<script src="https://unpkg.com/vue/dist/vue.js"></script>
-
+	<script src="https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js"></script>
 	<script type="text/javascript">
 		<?php
 		# load starter
@@ -164,12 +146,8 @@
 
 	<script src="dist/peta.js" charset="utf-8"></script>
 	<script src="dist/peta-icons.js"></script>
-	<script src="dist/peta-loader.js"></script>
+	<!-- <script src="dist/peta-loader.js"></script> -->
 	<script src="dist/controller.js"></script>
-
-	<script type="text/javascript">
-		peta_awal()
-	</script>
 
 	<script src="dist/app.js"></script>
 </body>

@@ -1,23 +1,18 @@
 <?php
 include 'boot/starter.php';
-header('Content-type: application/json');
 
 //disini nama database saya adalah nama_database
 $result = pg_query($conn, 'SELECT gid, namamasjid,kapasitas, pictures, st_asgeojson(geom) as geom FROM Masjid');
 
 
 // jika dekat dengan jalan
-if (@$_GET['jalan'] && $_GET['jalan'] != 'semua') {
-  $query = "select nama, st_astext(geom) from jalan where nama = '{$_GET['jalan']}'";
-
-  $jalan = pg_query($conn, $query);
-
-  $jalan = pg_fetch_assoc($jalan);
-  $jalan_geom_text = $jalan['st_astext'];
+if (@$_GET['nearby'] && @$_GET['gid']) {
+  $table_nearby = $_GET['nearby'];
+  $gid = (int) $_GET['gid'];
 
   $radius = @$_GET['radius'] ? $_GET['radius'] : 50;
 
-  $query = "select gid, namamasjid, kapasitas, pictures, st_asgeojson(geom) as geom from masjid where st_dwithin(geom, st_geomfromtext('{$jalan_geom_text}'), {$radius})";
+  $query = "select masjid.gid, masjid.namamasjid, masjid.kapasitas, masjid.pictures, st_asgeojson(masjid.geom) as geom from masjid, {$table_nearby} where st_dwithin(masjid.geom, {$table_nearby}.geom, {$radius}) and {$table_nearby}.gid = {$gid}";
 
   $result = pg_query($conn, $query);
 }
@@ -51,5 +46,5 @@ while ($row = pg_fetch_assoc($result)) {
 
 // return;
 
-
+header('Content-type: application/json');
 echo json_encode($geoJson);
