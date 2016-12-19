@@ -1,5 +1,5 @@
 <?php
-include 'config.php';
+include 'boot/starter.php';
 
 //disini nama database saya adalah nama_database
 $result = pg_prepare($conn, "my_query", 'SELECT gid, nama,menu,kapasitas,pictures, st_asgeojson(geom) as geom FROM Rumah_makan');

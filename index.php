@@ -116,6 +116,14 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.2.0/js/mdb.min.js" charset="utf-8"></script>
 	<script src="https://unpkg.com/vue/dist/vue.js"></script>
 
+	<script type="text/javascript">
+		<?php
+		# load starter
+		include 'api/boot/starter.php';
+		?>
+		var base_url = "<?php echo $base_url;?>";
+	</script>
+
 	<script src="dist/peta.js" charset="utf-8"></script>
 	<script src="dist/peta-icons.js"></script>
 	<script src="dist/peta-loader.js"></script>

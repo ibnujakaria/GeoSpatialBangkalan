@@ -1,8 +1,8 @@
 <?php
-include 'config.php';
+include 'boot/starter.php';
 
 //disini nama database saya adalah nama_database
-$result = pg_prepare($conn, "my_query", 'SELECT gid, nama,kapasitas,pictures, st_asgeojson(geom) as geom FROM Sekolahan');
+$result = pg_prepare($conn, "my_query", 'SELECT gid, nama,tiket,jam_buka,pictures, st_asgeojson(geom) as geom FROM Tempat_wisata');
 
 // disini saya membuat table dengan nama Gazebo
 $result = pg_execute($conn, "my_query",array());
@@ -25,7 +25,8 @@ while ($row = pg_fetch_assoc($result)) {
     'properties' => [
       'gid' => $row->gid,
       'nama' => $row->nama,
-      'kapasitas' => $row->kapasitas,
+      'tiket' => $row->tiket,
+      'jam_buka' => $row->jam_buka,
       'picture' => $row->pictures
     ]
   ];

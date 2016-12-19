@@ -14,7 +14,7 @@ function tampilkanMasjid() {
   }
 
   $.ajax({
-    url: 'http://localhost:8080/masjid.php',
+    url: base_url + '/api/masjid.php',
     data: query,
     success: function (response) {
       masjidLayer = new L.GeoJSON(response, {
@@ -44,7 +44,7 @@ function tampilkanJalan() {
   }
 
   $.ajax({
-      url: 'http://localhost:8080/jalan.php',
+      url: base_url + '/api/jalan.php',
       success: function (response) {
         jalanLayer = new L.GeoJSON(response, {
           onEachFeature: function (feature, layer) {
@@ -82,7 +82,7 @@ function tampilkanJalan() {
 function peta_awal() {
 
   $.ajax({
-    url: 'http://localhost:8080/bank.php',
+    url: base_url + '/api/bank.php',
     success: function (response) {
       console.log(response);
       new L.GeoJSON(response, {
@@ -100,7 +100,7 @@ function peta_awal() {
   })
 
   $.ajax({
-    url: 'http://localhost:8080/gedung_olahraga.php',
+    url: base_url + '/api/gedung_olahraga.php',
     success: function (response) {
       new L.GeoJSON(response, {
         pointToLayer: function (feature, latlng) {
@@ -117,7 +117,7 @@ function peta_awal() {
   })
 
   $.ajax({
-    url: 'http://localhost:8080/hotel.php',
+    url: base_url + '/api/hotel.php',
     success: function (response) {
       new L.GeoJSON(response, {
         pointToLayer: function (feature, latlng) {
@@ -134,7 +134,7 @@ function peta_awal() {
   })
 
   $.ajax({
-    url: 'http://localhost:8080/mall_dan_swalayan.php',
+    url: base_url + '/api/mall_dan_swalayan.php',
     success: function (response) {
       new L.GeoJSON(response, {
         pointToLayer: function (feature, latlng) {
@@ -151,7 +151,7 @@ function peta_awal() {
   })
 
   $.ajax({
-    url: 'http://localhost:8080/rumah_makan.php',
+    url: base_url + '/api/rumah_makan.php',
     success: function (response) {
       console.log(response);
       new L.GeoJSON(response, {
@@ -170,7 +170,7 @@ function peta_awal() {
   })
 
   $.ajax({
-    url: 'http://localhost:8080/sekolahan.php',
+    url: base_url + '/api/sekolahan.php',
     success: function (response) {
       new L.GeoJSON(response, {
         pointToLayer: function (feature, latlng) {
@@ -187,7 +187,7 @@ function peta_awal() {
   })
 
   $.ajax({
-    url: 'http://localhost:8080/tempat_wisata.php',
+    url: base_url + '/api/tempat_wisata.php',
     success: function (response) {
       new L.GeoJSON(response, {
         pointToLayer: function (feature, latlng) {
@@ -212,7 +212,7 @@ function peta_awal() {
     var jam_buka = prompt("Masukkan jam buka")
 
     $.ajax({
-      url: 'http://localhost:8080/bank-crud.php',
+      url: base_url + '/api/bank-crud.php',
       data: {
         gid: gid,
         nama: nama,
