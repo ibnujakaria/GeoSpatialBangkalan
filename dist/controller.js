@@ -38,6 +38,13 @@ function geserPetaKeKanan() {
 		$('.sidebar').fadeIn(1000)
 	})
 
+	$('#map-covers').animate({
+		top: '20px',
+		left: '360px',
+		bottom: '20px',
+		right: '20px'
+	})
+
 	$('#map-controls').animate({
 		top: '100px',
 		left: '360px'
@@ -54,8 +61,19 @@ function geserPetaJadiFullScreen() {
 		right: '0'
 	})
 
+	$('#map-covers').animate({
+		top: '0',
+		left: '0',
+		bottom: '0',
+		right: '0'
+	})
+
 	$('#map-controls').animate({
 		top: '80px',
 		left: '0px'
 	})
+}
+
+function mapCoversToggle () {
+	$('#map-covers').fadeToggle()
 }

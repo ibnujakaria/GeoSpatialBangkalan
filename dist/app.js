@@ -4,6 +4,7 @@ app = new Vue({
 	el: '#vue-app',
 	data: {
 		menu_aktif: 'fasilitas-umum',
+		loading: null,
 		search: {
 			type: null,
 			nearby: null,
@@ -96,10 +97,12 @@ app = new Vue({
 			
 			var params = {
 				nearby: this.search.nearby,
-				radius: this.search.radius,
+				radius: this.search.radius / 1000,
 				gid: this.search.gid
 			}
 
+			this.loading = "Loading...."
+			mapCoversToggle()
 			this.showToTheMap(this.search.type, params)
 		},
 		showToTheMap: function (key, params) {
@@ -131,6 +134,14 @@ app = new Vue({
 				});
 
 				this.dataLeafletLayers[key].addTo(map)
+
+				if (params) {
+					var me = this
+					setTimeout(function () {
+						me.loading = null
+						mapCoversToggle()
+					}, 1000)
+				}
 			})
 		},
 		petaAwal: function () {

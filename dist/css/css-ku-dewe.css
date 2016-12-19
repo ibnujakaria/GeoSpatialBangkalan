@@ -68,7 +68,7 @@ body {
   color: rgba(0, 0, 0, 0.4)
 }
 
-#map {
+#map, #map-covers {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -76,6 +76,11 @@ body {
   right: 0;
   border-radius: 4px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2)
+}
+
+#map-covers {
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 199;
 }
 
 .sidebar {

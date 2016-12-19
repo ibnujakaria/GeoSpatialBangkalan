@@ -15,6 +15,7 @@
 <body>
 	<div id="map"></div>
 	<div id="map-controls" class="left top fixed" style="margin-left: 10px; top: 80px">
+	<div id="map-covers" style="display: none"></div>
 		<button id="btn-full-screen"><i class="fa fa-arrows-alt"></i></button>
 	</div>
 	<div id="vue-app">
@@ -87,10 +88,10 @@
 								</div>
 								<div class="form-group">
 									<h4>Radius</h4>
-									<input type="number" step="0.0001" v-model="search.radius">
+									<input type="number" step="0.0001" v-model="search.radius" placeholder="Kilometers">
 								</div>
 								<div>
-									<button class="btn btn-sm btn-default">Cari</button>
+									<button class="btn btn-sm btn-default">Cari</button> <span>{{loading}}</span>
 								</div>
 							</form>
 						</div>

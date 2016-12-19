@@ -10,7 +10,7 @@ if (@$_GET['nearby'] && @$_GET['gid']) {
   $table_nearby = $_GET['nearby'];
   $gid = (int) $_GET['gid'];
 
-  $radius = @$_GET['radius'] ? $_GET['radius'] : 50;
+  $radius = @$_GET['radius'] !== null ? $_GET['radius'] : 50;
 
   $query = "select masjid.gid, masjid.namamasjid, masjid.kapasitas, masjid.pictures, st_asgeojson(masjid.geom) as geom from masjid, {$table_nearby} where st_dwithin(masjid.geom, {$table_nearby}.geom, {$radius}) and {$table_nearby}.gid = {$gid}";
 
