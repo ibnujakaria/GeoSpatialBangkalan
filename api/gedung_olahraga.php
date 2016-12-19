@@ -1,11 +1,18 @@
 <?php
 include 'boot/starter.php';
 
-//disini nama database saya adalah nama_database
-$result = pg_prepare($conn, "my_query", 'SELECT gid, nama,kapasitas,pictures, st_asgeojson(geom) as geom FROM Gedung_olahraga');
+$result = pg_query($conn, 'SELECT gid, nama,kapasitas,pictures, st_asgeojson(geom) as geom FROM Gedung_olahraga');
 
-// disini saya membuat table dengan nama Gazebo
-$result = pg_execute($conn, "my_query",array());
+if (@$_GET['nearby'] && @$_GET['gid']) {
+  $table_nearby = $_GET['nearby'];
+  $gid = (int) $_GET['gid'];
+
+  $radius = @$_GET['radius'] ? $_GET['radius'] : 50;
+
+  $query = "select gedung_olahraga.gid, gedung_olahraga.nama, gedung_olahraga.kapasitas, gedung_olahraga.pictures, st_asgeojson(gedung_olahraga.geom) as geom from gedung_olahraga, {$table_nearby} where st_dwithin(gedung_olahraga.geom, {$table_nearby}.geom, {$radius}) and {$table_nearby}.gid = {$gid}";
+
+  $result = pg_query($conn, $query);
+}
 
 $geoJson = [
   'type' => 'FeatureCollection',

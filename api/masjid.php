@@ -17,6 +17,8 @@ if (@$_GET['nearby'] && @$_GET['gid']) {
   $result = pg_query($conn, $query);
 }
 
+
+
 $geoJson = [
   'type' => 'FeatureCollection',
   'features' => []
