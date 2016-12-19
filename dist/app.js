@@ -3,7 +3,11 @@ var app = null;
 app = new Vue({
 	el: '#vue-app',
 	data: {
-		menu_aktif: 'fasilitas-umum'
+		menu_aktif: 'fasilitas-umum',
+		search: {
+			type: null,
+			nearby: null
+		}
 	},
 	methods: {
 		menuUtama: function (menu) {

@@ -49,15 +49,53 @@
 					Saran
 				</li>
 			</ul>
+			<ul class="list-group" style="margin-bottom: 10px" v-else>
+				<li class="list-group-item" @click="aksesMenu('fasilitas-umum')">
+					<i class="fa fa-arrow-left" style="width: 20px"></i>
+					Back
+				</li>
+			</ul>
 			<div v-show="menu_aktif === 'pencarian'">
-				<ul class="list-group" style="margin-bottom: 10px">
-					<li class="list-group-item" @click="aksesMenu('fasilitas-umum')">
-						<i class="fa fa-arrow-left" style="width: 20px"></i>
-						Back
-					</li>
-				</ul>
 				<div class="box">
-					<form id="form-cari-masjid">
+					<div>
+						<h4>Apa yang ingin anda cari?</h4>
+						<div class="form-group">
+							<select class="form-control" v-model="search.type">
+								<option value="masjid">Masjid</option>
+								<option value="mall">Mall</option>
+								<option value="bank">Bank</option>
+								<option value="jalan">Jalan</option>
+							</select>
+						</div>
+						<div v-if="search.type">
+							<h4>Cari <span style="text-transform: capitalize;">{{search.type}}</span> di sekitar?</h4>
+							<div class="form-group">
+								<select class="form-control" v-model="search.nearby">
+									<option value="masjid">Masjid</option>
+									<option value="mall">Mall</option>
+									<option value="bank">Bank</option>
+									<option value="jalan">Jalan</option>
+								</select>
+							</div>
+						</div>
+						<div v-if="search.nearby">
+							<form>
+								<div class="form-group">
+									<h4>Nama <span style="text-transform: capitalize;">{{search.nearby}}</span></h4>
+									<select id="jalan-input" class="form-control">
+									</select>
+								</div>
+								<div class="form-group">
+									<h4>Radius</h4>
+									<input type="number" name="radius" step="0.0001" id="radius-input">
+								</div>
+								<div>
+									<button class="btn btn-sm btn-default">Cari</button>
+								</div>
+							</form>
+						</div>
+					</div>
+					<!-- <form id="form-cari-masjid">
 						<h3>Cari masjid di sekitar</h3>
 						<div class="form-group">
 							<label>Nama Jalan</label>
@@ -71,7 +109,7 @@
 						<div>
 							<button class="btn btn-sm btn-default">Cari</button>
 						</div>
-					</form>		
+					</form>		 -->
 				</div>
 			</div>
 		</div>
