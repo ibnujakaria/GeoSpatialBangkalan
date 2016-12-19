@@ -23,6 +23,9 @@
 			<p>
 				Temukan fasilitas-fasilitas umum di kota Bangkalan. Dan jangan tersesat!
 			</p>
+			<p>
+				{{menu_aktif}}
+			</p>
 			<ul class="list-group" v-if="menu_aktif === 'fasilitas-umum'">
 				<li :class="getClassLists('fasilitas-umum')" @click="aksesMenu('fasilitas-umum')">
 					<i class="fa fa-building" style="width: 20px"></i>
@@ -49,7 +52,7 @@
 					Saran
 				</li>
 			</ul>
-			<ul class="list-group" style="margin-bottom: 10px" v-else>
+			<ul class="list-group" style="margin-bottom: 10px" v-if="menu_aktif !== 'fasilitas-umum'">
 				<li class="list-group-item" @click="aksesMenu('fasilitas-umum')">
 					<i class="fa fa-arrow-left" style="width: 20px"></i>
 					Back
@@ -93,6 +96,40 @@
 						</div>
 					</div>
 				</div>
+			</div>
+			<div class="box" v-show="menu_aktif == 'tentang'">
+				<h4>Tentang</h4>
+				<p>Aplikasi ini menghimpun dan menyajikan data-data spatial fasilitas umum yang ada di Kabupaten Bangkalan.</p>
+			</div>
+			<div class="box" v-show="menu_aktif == 'bantuan'">
+				<h4>Bantuan</h4>
+				<p>Berikut ini bebepara hal umum yang bisa dilakukan:</p>
+				<h4>Pencarian</h4>
+				<ol>
+					<li>Klik menu pencarian</li>
+					<li>Pilih fasilitas yang ingin dicari</li>
+					<li>Pilih pencarian berdasarkan fasilitas apa</li>
+					<li>Klik cari</li>
+					<li>Maka hasil pencarian akan muncul pada peta</li>
+				</ol>
+				<h4>Detail Fasilitas</h4>
+				<ol>
+					<li>Taruh perhatian kepada peta</li>
+					<li>Pilih salah satu object fasilitas</li>
+					<li>Klik object tersebut</li>
+					<li>Maka detail fasilitas berikut gambarnya akan muncul</li>
+				</ol>
+			</div>
+			<div class="box" v-show="menu_aktif == 'hubungi'">
+				<h4>Abdul Basith</h4>
+				<p>basithdjunaedi@gmail.com</p>
+				<hr>
+				<h4>Nurul Huda</h4>
+				<p>140411100069@student.trunojoyo.ac.id</p>
+			</div>
+			<div class="box" v-show="menu_aktif == 'saran'">
+				<h4>Saran</h4>
+				<p>Anda bisa menyampaikan saran dengan membuat issue pada repository <a href="https://github.com/basithdjunaedi/GeoSpatialBangkalan">github</a> kami.</p>
 			</div>
 		</div>
 		<!-- <div class="box right top fixed and pinned" style="width: 300px">

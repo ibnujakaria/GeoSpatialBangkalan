@@ -65,6 +65,7 @@ app = new Vue({
 		},
 		aksesMenu: function (menu) {
 			this.menu_aktif = menu
+			console.log(this.menu_aktif)
 		},
 		getClassLists: function (menu) {
 			var isActive = this.menu_aktif == menu
